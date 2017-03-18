@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cs555.assignment1.controller;
+package dfs.controller;
 
-import cs555.assignment1.util.Constants;
+import dfs.util.Constants;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -19,28 +19,26 @@ import java.util.logging.Logger;
  *
  * @author namanrs
  */
-public class ClientControllerChunkRequest {
+public class ControllerToClientChunkServerInfoToWrite {
 
     byte type;
-    int chunkSeq;
-    String filePath;
+    String chunkServerInfo;
 //    int nodeId;
 //    String informationString;
 
-    public ClientControllerChunkRequest() {
-        this.type = Constants.MESSAGES.CLIENT_CONTROLLER_CHUNK_REQUEST;
+    public ControllerToClientChunkServerInfoToWrite() {
+        this.type = Constants.MESSAGES.CONTROLLER_TO_CLIENT_STORE_FILE;
     }
 
-    public ClientControllerChunkRequest(byte[] marshalledBytes) {
+    public ControllerToClientChunkServerInfoToWrite(byte[] marshalledBytes) {
         try {
             ByteArrayInputStream baInputStream = new ByteArrayInputStream(marshalledBytes);
             DataInputStream din = new DataInputStream(new BufferedInputStream(baInputStream));
             type = din.readByte();
-            chunkSeq = din.readInt();
             int length = din.readInt();
             byte[] info = new byte[length];
             din.read(info);
-            filePath = new String(info);
+            chunkServerInfo = new String(info);
 //            nodeId = din.readInt();
 //            int infoLength = din.read();
 ////            System.out.println(NodeReportsOverlaySetupStatus.class + "-length at registry-" + infoLength);
@@ -64,14 +62,13 @@ public class ClientControllerChunkRequest {
         this.type = type;
     }
 
-    public int getChunkSeq() {
-        return chunkSeq;
+    public String getChunkServerInfo() {
+        return chunkServerInfo;
     }
 
-    public void setChunkSeq(int chunkSeq) {
-        this.chunkSeq = chunkSeq;
+    public void setChunkServerInfo(String chunkServerInfo) {
+        this.chunkServerInfo = chunkServerInfo;
     }
-    
 
 //    public int getNodeId() {
 //        return nodeId;
@@ -88,16 +85,14 @@ public class ClientControllerChunkRequest {
 //    public void setInformationString(String informationString) {
 //        this.informationString = informationString;
 //    }
-
     public byte[] getBytes() {
         try {
             byte[] marshalledBytes = null;
             ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream();
             DataOutputStream dout = new DataOutputStream(new BufferedOutputStream(baOutputStream));
             dout.write(type);
-            dout.writeInt(chunkSeq);
-            dout.writeInt(filePath.length());
-            dout.write(filePath.getBytes());
+            dout.writeInt(chunkServerInfo.length());
+            dout.write(chunkServerInfo.getBytes());
 //            byte[] infoBytes = informationString.getBytes();
 ////            System.out.println(NodeReportsOverlaySetupStatus.class + "-bytes length-" + infoBytes.length);
 //            dout.write(infoBytes.length);
@@ -117,19 +112,8 @@ public class ClientControllerChunkRequest {
 //    public String toString() {
 //        return "NodeReportsOverlaySetupStatus{" + "type=" + type + ", nodeId=" + nodeId + ", informationString=" + informationString + '}';
 //    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-
     @Override
     public String toString() {
-        return "ClientControllerChunkRequest{" + "type=" + type + ", chunkSeq=" + chunkSeq + ", filePath=" + filePath + '}';
+        return "ClientControllerChunkRequest{" + "type=" + type + '}';
     }
-
-    
 }

@@ -1,7 +1,7 @@
-package cs555.assignment1.util;
+package dfs.util;
 
-import cs555.assignment1.client.Client;
-import cs555.assignment1.transport.Node;
+import dfs.client.Client;
+import dfs.transport.Node;
 import java.util.Scanner;
 
 /**

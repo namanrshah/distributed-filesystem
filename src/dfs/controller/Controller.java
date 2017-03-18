@@ -1,11 +1,11 @@
-package cs555.assignment1.controller;
+package dfs.controller;
 
-import cs555.assignment1.wireformats.ClientControllerChunkRequest;
-import cs555.assignment1.wireformats.ChunkServerControllerConnection;
-import cs555.assignment1.transport.Node;
-import cs555.assignment1.transport.TCPConnection;
-import cs555.assignment1.util.Constants;
-import cs555.assignment1.wireformats.ControllerToClientChunkServerInfoToWrite;
+import dfs.wireformats.ClientControllerChunkRequest;
+import dfs.wireformats.ChunkServerControllerConnection;
+import dfs.transport.Node;
+import dfs.transport.TCPConnection;
+import dfs.util.Constants;
+import dfs.wireformats.ControllerToClientChunkServerInfoToWrite;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;

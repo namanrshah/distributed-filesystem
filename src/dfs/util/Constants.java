@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cs555.assignment1.util;
+package dfs.util;
 
 /**
  *

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cs555.assignment1.chunkServer;
+package dfs.chunkServer;
 
-import cs555.assignment1.util.Constants;
+import dfs.util.Constants;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

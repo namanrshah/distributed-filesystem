@@ -1,7 +1,7 @@
-package dfs.util;
+package proj.dfs.util;
 
-import dfs.client.Client;
-import dfs.transport.Node;
+import proj.dfs.client.Client;
+import proj.dfs.transport.Node;
 import java.util.Scanner;
 
 /**

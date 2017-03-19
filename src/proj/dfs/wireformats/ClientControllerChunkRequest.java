@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dfs.controller;
+package proj.dfs.wireformats;
 
-import dfs.util.Constants;
+import proj.dfs.util.Constants;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -23,7 +23,7 @@ public class ClientControllerChunkRequest {
 
     byte type;
     int chunkSeq;
-    String filePath;
+    String filePath;//starting from 1
 //    int nodeId;
 //    String informationString;
 
@@ -71,7 +71,6 @@ public class ClientControllerChunkRequest {
     public void setChunkSeq(int chunkSeq) {
         this.chunkSeq = chunkSeq;
     }
-    
 
 //    public int getNodeId() {
 //        return nodeId;
@@ -88,7 +87,6 @@ public class ClientControllerChunkRequest {
 //    public void setInformationString(String informationString) {
 //        this.informationString = informationString;
 //    }
-
     public byte[] getBytes() {
         try {
             byte[] marshalledBytes = null;
@@ -113,15 +111,14 @@ public class ClientControllerChunkRequest {
         return null;
     }
 
-//    @Override
-//    public String toString() {
-//        return "NodeReportsOverlaySetupStatus{" + "type=" + type + ", nodeId=" + nodeId + ", informationString=" + informationString + '}';
-//    }
-
     public String getFilePath() {
         return filePath;
     }
 
+//    @Override
+//    public String toString() {
+//        return "NodeReportsOverlaySetupStatus{" + "type=" + type + ", nodeId=" + nodeId + ", informationString=" + informationString + '}';
+//    }
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
@@ -131,5 +128,4 @@ public class ClientControllerChunkRequest {
         return "ClientControllerChunkRequest{" + "type=" + type + ", chunkSeq=" + chunkSeq + ", filePath=" + filePath + '}';
     }
 
-    
 }

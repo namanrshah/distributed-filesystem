@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dfs.chunkServer;
+package proj.dfs.wireformats;
 
-import dfs.util.Constants;
+import proj.dfs.util.Constants;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -22,6 +22,7 @@ import java.util.logging.Logger;
 public class ChunkServerControllerConnection {
 
     byte type;
+    int listeningPort;
     long freeSpace;
 //    int nodeId;
 //    String informationString;
@@ -35,6 +36,7 @@ public class ChunkServerControllerConnection {
             ByteArrayInputStream baInputStream = new ByteArrayInputStream(marshalledBytes);
             DataInputStream din = new DataInputStream(new BufferedInputStream(baInputStream));
             type = din.readByte();
+            listeningPort = din.readInt();
             freeSpace = din.readLong();
             baInputStream.close();
             din.close();
@@ -59,12 +61,22 @@ public class ChunkServerControllerConnection {
         this.type = type;
     }
 
+    public int getListeningPort() {
+        return listeningPort;
+    }
+
+    public void setListeningPort(int listeningPort) {
+        this.listeningPort = listeningPort;
+    }
+    
+
     public byte[] getBytes() {
         try {
             byte[] marshalledBytes = null;
             ByteArrayOutputStream baOutputStream = new ByteArrayOutputStream();
             DataOutputStream dout = new DataOutputStream(new BufferedOutputStream(baOutputStream));
             dout.write(type);
+            dout.writeInt(listeningPort);
             dout.writeLong(freeSpace);
 //            dout.writeInt(nodeId);
 //            byte[] infoBytes = informationString.getBytes();

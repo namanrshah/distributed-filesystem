@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dfs.chunkServer;
+package proj.dfs.chunkServer;
 
-import dfs.util.Constants;
+import proj.dfs.util.Constants;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

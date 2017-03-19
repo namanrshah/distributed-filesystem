@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dfs.chunkServer;
+package proj.dfs.chunkServer;
 
-import dfs.wireformats.ChunkServerControllerConnection;
-import dfs.transport.Node;
-import dfs.transport.TCPConnection;
-import dfs.util.Constants;
-import dfs.wireformats.ClientToChunkServerStoreFile;
+import proj.dfs.wireformats.ChunkServerControllerConnection;
+import proj.dfs.transport.Node;
+import proj.dfs.transport.TCPConnection;
+import proj.dfs.util.Constants;
+import proj.dfs.wireformats.ClientToChunkServerStoreFile;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

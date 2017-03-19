@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dfs.client;
+package proj.dfs.client;
 
-import dfs.controller.ChunkServerFreeSpace;
-import dfs.wireformats.ClientControllerChunkRequest;
-import dfs.transport.Node;
-import dfs.transport.TCPConnection;
-import dfs.util.ConsoleCommands;
-import dfs.util.Constants;
-import dfs.wireformats.ChunkServerControllerConnection;
-import dfs.wireformats.ClientToChunkServerStoreFile;
-import dfs.wireformats.ControllerToClientChunkServerInfoToWrite;
+import proj.dfs.controller.ChunkServerFreeSpace;
+import proj.dfs.wireformats.ClientControllerChunkRequest;
+import proj.dfs.transport.Node;
+import proj.dfs.transport.TCPConnection;
+import proj.dfs.util.ConsoleCommands;
+import proj.dfs.util.Constants;
+import proj.dfs.wireformats.ChunkServerControllerConnection;
+import proj.dfs.wireformats.ClientToChunkServerStoreFile;
+import proj.dfs.wireformats.ControllerToClientChunkServerInfoToWrite;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;

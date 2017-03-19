@@ -1,11 +1,11 @@
-package dfs.controller;
+package proj.dfs.controller;
 
-import dfs.wireformats.ClientControllerChunkRequest;
-import dfs.wireformats.ChunkServerControllerConnection;
-import dfs.transport.Node;
-import dfs.transport.TCPConnection;
-import dfs.util.Constants;
-import dfs.wireformats.ControllerToClientChunkServerInfoToWrite;
+import proj.dfs.wireformats.ClientControllerChunkRequest;
+import proj.dfs.wireformats.ChunkServerControllerConnection;
+import proj.dfs.transport.Node;
+import proj.dfs.transport.TCPConnection;
+import proj.dfs.util.Constants;
+import proj.dfs.wireformats.ControllerToClientChunkServerInfoToWrite;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;

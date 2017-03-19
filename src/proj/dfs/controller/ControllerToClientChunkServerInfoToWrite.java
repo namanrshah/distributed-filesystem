@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dfs.wireformats;
+package proj.dfs.controller;
 
-import dfs.util.Constants;
+import proj.dfs.util.Constants;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
@@ -19,35 +19,34 @@ import java.util.logging.Logger;
  *
  * @author namanrs
  */
-public class ChunkDataPropogation {
+public class ControllerToClientChunkServerInfoToWrite {
 
     byte type;
     String chunkServerInfo;
-    String filename;
-    int sequence;
-    byte[] chunkData;
+//    int nodeId;
+//    String informationString;
 
-    public ChunkDataPropogation() {
-        this.type = Constants.MESSAGES.CHUNKDATA_PROPOGATION;
+    public ControllerToClientChunkServerInfoToWrite() {
+        this.type = Constants.MESSAGES.CONTROLLER_TO_CLIENT_STORE_FILE;
     }
 
-    public ChunkDataPropogation(byte[] marshalledBytes) {
+    public ControllerToClientChunkServerInfoToWrite(byte[] marshalledBytes) {
         try {
             ByteArrayInputStream baInputStream = new ByteArrayInputStream(marshalledBytes);
             DataInputStream din = new DataInputStream(new BufferedInputStream(baInputStream));
             type = din.readByte();
-            int len = din.readInt();
-            byte[] info = new byte[len];
+            int length = din.readInt();
+            byte[] info = new byte[length];
             din.read(info);
             chunkServerInfo = new String(info);
-            int fileNameLen = din.readInt();
-            byte[] fileName = new byte[fileNameLen];
-            din.read(fileName);
-            filename = new String(fileName);
-            sequence = din.readInt();
-            int dataLenInt = din.readInt();
-            chunkData = new byte[dataLenInt];
-            din.read(chunkData);
+//            nodeId = din.readInt();
+//            int infoLength = din.read();
+////            System.out.println(NodeReportsOverlaySetupStatus.class + "-length at registry-" + infoLength);
+//            byte[] infoBytes = new byte[infoLength];
+//            System.out.println("");
+//            din.read(infoBytes, 0, infoLength);
+//            informationString = new String(infoBytes);
+//            System.out.println(NodeReportsOverlaySetupStatus.class + "-info string-" + informationString);
             baInputStream.close();
             din.close();
         } catch (IOException ex) {
@@ -71,30 +70,21 @@ public class ChunkDataPropogation {
         this.chunkServerInfo = chunkServerInfo;
     }
 
-    public byte[] getChunkData() {
-        return chunkData;
-    }
-
-    public void setChunkData(byte[] chunkData) {
-        this.chunkData = chunkData;
-    }
-
-    public int getSequence() {
-        return sequence;
-    }
-
-    public void setSequence(int sequence) {
-        this.sequence = sequence;
-    }
-
-    public String getFilename() {
-        return filename;
-    }
-
-    public void setFilename(String filename) {
-        this.filename = filename;
-    }
-
+//    public int getNodeId() {
+//        return nodeId;
+//    }
+//
+//    public void setNodeId(int nodeId) {
+//        this.nodeId = nodeId;
+//    }
+//
+//    public String getInformationString() {
+//        return informationString;
+//    }
+//
+//    public void setInformationString(String informationString) {
+//        this.informationString = informationString;
+//    }
     public byte[] getBytes() {
         try {
             byte[] marshalledBytes = null;
@@ -103,11 +93,10 @@ public class ChunkDataPropogation {
             dout.write(type);
             dout.writeInt(chunkServerInfo.length());
             dout.write(chunkServerInfo.getBytes());
-            dout.writeInt(filename.length());
-            dout.write(filename.getBytes());
-            dout.writeInt(sequence);
-            dout.writeInt(chunkData.length);
-            dout.write(chunkData);
+//            byte[] infoBytes = informationString.getBytes();
+////            System.out.println(NodeReportsOverlaySetupStatus.class + "-bytes length-" + infoBytes.length);
+//            dout.write(infoBytes.length);
+//            dout.write(infoBytes);
             dout.flush();
             marshalledBytes = baOutputStream.toByteArray();
             baOutputStream.close();
@@ -119,8 +108,12 @@ public class ChunkDataPropogation {
         return null;
     }
 
+//    @Override
+//    public String toString() {
+//        return "NodeReportsOverlaySetupStatus{" + "type=" + type + ", nodeId=" + nodeId + ", informationString=" + informationString + '}';
+//    }
     @Override
     public String toString() {
-        return "ClientToChunkServerStoreFile{" + "type=" + type + ", chunkServerInfo=" + chunkServerInfo + ", chunkData=" + chunkData + '}';
+        return "ClientControllerChunkRequest{" + "type=" + type + '}';
     }
 }

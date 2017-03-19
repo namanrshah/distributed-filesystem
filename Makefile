@@ -2,10 +2,11 @@ all: compile
 	@echo -e '[INFO] Done!'
 clean:
 	@echo -e '[INFO] Cleaning Up..'	
-	@-rm -rf dfs/**/*.class
+	@-rm -rf bin/dfs/**/*.class
 
 compile: 
 	@echo -e '[INFO] Compiling the Source..'
-	@javac -d . dfs/**/*.java
+	@mkdir -p bin
+	@javac -d bin/ src/dfs/**/*.java
 	
 	
